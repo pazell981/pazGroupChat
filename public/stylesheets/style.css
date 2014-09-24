@@ -1,0 +1,107 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body {s
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1{
+	text-align: center;
+}
+form { 
+	background: #000000; 
+	padding: 3px; 
+	position: fixed; 
+	bottom: 0; 
+	width: 1200px;
+	height: 10%;
+}
+
+form textarea {
+	border: 0; 
+	padding: 10px; 
+	width: 1100px;
+	height: 95%;
+	margin-right: 5px;
+	display: inline-block;
+	font-size: .9em;
+}
+
+form input[type="submit"] {
+	width: 70px; 
+	background: #00008B; 
+	border: none; 
+	padding: 10px;
+	display: inline-block;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 1em;
+	vertical-align: top;
+	margin-top: 25px;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+#container{
+	width: 1200px;
+	height: 100%;
+	display: block;
+	position: relative;
+	margin: 0px auto;
+}
+
+#chatbox{
+	position: relative;
+	width: 20%;
+	min-height: 560px;
+	height: 85%;
+	overflow: scroll;
+	border: 3px outset #000000;
+	display: inline-block;
+	margin: 10px;
+	vertical-align: top;
+}
+
+#chatbox h3{
+	padding: 5px;
+	margin: 0px;
+	text-align: center;
+	color: #ffffff;
+	background: #00008B;
+}
+
+#chatbox p{
+	padding: 1px 10px;
+	margin: 0px;
+	font-weight: bold;
+}
+
+#chatterbox{
+	position: relative;
+	width: 75%;
+	min-height: 560px;
+	height: 85%;
+	margin: 10px;
+	border: 3px outset #000000;
+	display: inline-block;
+	overflow: scroll;
+}
+#chatterbox h3{
+	padding: 5px;
+	margin: 0px;
+	text-align: center;
+	color: #ffffff;
+	background: #00008B;
+}
+#chatterbox p{
+	padding: 1px 10px;
+	margin: 0px;
+	font-weight: normal;
+}

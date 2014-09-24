@@ -1,0 +1,26 @@
+{
+  "name": "Group_Chat_App",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.2.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "ejs": "~0.8.5"
+  },
+  "description": "A Node Express app for group chat",
+  "main": "Procfile",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "groupChat"
+  },
+  "author": "Paul Zellmer",
+  "license": "ISC"
+}

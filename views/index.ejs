@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  	<script src="/socket.io/socket.io.js"></script>
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+		<script>
+			$(document).ready(function(){
+				// 1. user connects, prompted for name
+				var name = prompt("What is your name?");
+				io = io.connect();
+				io.emit('user_connect', {name: name});
+				io.on('user_added', function(user) {
+						for(var i in user.users_connected){
+							$( "#chatbox" ).last().append("<p id=" + user.users_connected[i].user_id + ">" + user.users_connected[i].name + "</p>");
+						}
+						$( "#chatbox" ).last().append("<p id=" + user.user_id + ">" + user.name + "</p>");
+						$("#"+user.user_id).hide();
+						$("#"+user.user_id).fadeIn(1500);
+						$("#hidden_user_name").val(user.name)
+					});
+				// 2. user given id, connected user's emitted to new user
+
+				// 3. new user's info broadcasted their chatbox fades in
+
+					io.on('new_user_added', function(user) {
+						$( "#chatbox" ).append("<p id=" + user.user_id + ">" + user.name + "</p>");
+						$("#"+user.user_id).hide();
+						$("#"+user.user_id).fadeIn(1500);
+					});
+				// 4. user submits, message appended to their chatbox
+					$('form').submit(function(){
+		  			io.emit('message', {
+		  				user_id: $('#hidden_user').val(),
+		  				name: $('#hidden_user_name').val(),
+		  				message: $('#message').val()
+		  			});
+		  			$('#message').val("");
+		  			return false;
+		  		});
+					io.on('message', function(message) {
+						$( "#chatterbox").last().append("<p><span class='bold'>"+message.user_name+"</span>:  "+message.user_message + "</p>");
+						});
+				// 5. user disconnects, user's chatbox fades out
+		  		io.on('user_disconnect', function(user){
+		  			$( "#"+user.user_id).fadeOut(1500, function(){
+		  				$( "#"+user.user_id).remove();
+		  			});
+		  		})
+				});
+		</script>
+  </head>
+  <body>
+    <div id='container'>
+    	<h1><%= title %></h1>
+    	<div id='chatbox'>
+    		<h3>Users Online</h3>
+    	</div>
+	    <div id='chatterbox'>
+	    	<h3>Chatterbox</h3>
+	    </div>
+    	<form action=''>
+    		<input type="hidden" id="hidden_user_name" val="">
+    		<textarea id="message"></textarea><input type="submit">Send</button>
+    	</form>
+    </div>
+  </body>
+</html>
